@@ -14,8 +14,10 @@ public class Manager : MonoBehaviour {
         {
             for(int j = 0; j < 10; j++)
             {
-                GameObject tmpTeleport = Instantiate(teleportPoint, new Vector3(i, 0, j), Quaternion.identity);
-                tmpTeleport.transform.parent = teleport.transform;
+                //GameObject tmpTeleport = Instantiate(teleportPoint);
+                //tmpTeleport.transform.position = new Vector3(i, 0, j);
+
+                //tmpTeleport.transform.parent = teleport.transform;
             }
         }
 	}
