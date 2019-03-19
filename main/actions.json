@@ -41,6 +41,10 @@
       "requirement": "optional"
     },
     {
+      "name": "/actions/default/in/gyhuh",
+      "type": "pose"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     }
@@ -48,6 +52,10 @@
   "action_sets": [
     {
       "name": "/actions/default",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/NewSet",
       "usage": "single"
     }
   ],
@@ -99,7 +107,8 @@
       "/actions/default/in/SkeletonLeftHand": "Skeleton (Left)",
       "/actions/default/in/SkeletonRightHand": "Skeleton (Right)",
       "/actions/default/in/Teleport": "Teleport",
-      "/actions/default/out/Haptic": "Haptic"
+      "/actions/default/out/Haptic": "Haptic",
+      "/actions/default/in/gyhuh": "rtyu"
     }
   ]
 }

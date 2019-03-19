@@ -89,6 +89,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Pose gyhuh
+        {
+            get
+            {
+                return SteamVR_Actions.default_gyhuh;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get
