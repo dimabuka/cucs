@@ -89,11 +89,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Pose gyhuh
+        public virtual SteamVR_Action_Boolean NextItem
         {
             get
             {
-                return SteamVR_Actions.default_gyhuh;
+                return SteamVR_Actions.default_NextItem;
             }
         }
         

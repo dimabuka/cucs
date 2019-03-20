@@ -11,25 +11,16 @@ public class ActionScript : MonoBehaviour {
     public SteamVR_Action_Boolean grabAction;
     public GameObject location;
     public GameObject laserPrefab;
+    public GameObject[] objects;
+    public SteamVR_Action_Boolean nextItem;
+    public int count;
+    public GameObject Holo;
+    public Manager manager;
 
+    private bool firstTouchNextItem = true;
     private bool firstTouchGrab = true;
     private GameObject ActiveCell = null;
-    private GameObject laser;
-    private Transform laserTransform;
-    private Vector3 hitPoint;
-
-    private void Start()
-    {
-        laser = Instantiate(laserPrefab);
-        laserTransform = laser.transform;
-    }
-
-    private void ShowLaser(RaycastHit hit)
-    {
-        laser.SetActive(true);
-        laserTransform.position = Vector3.Lerp(controllerPose.transform.position, hitPoint, .5f);
-        laserTransform.LookAt(hitPoint);
-    }
+    private int pointer = 0;
 
     void Update()
     {
@@ -41,9 +32,6 @@ public class ActionScript : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(controllerPose.transform.position, transform.forward, out hit, 100))
         {
-            hitPoint = hit.point;
-            laser.transform.position = Vector3.Lerp(controllerPose.transform.position, hit.point, .5f);
-            laser.transform.LookAt(hit.point);
             if (hit.transform.tag == "Terrain")
             { 
                 int x = (int)hit.point.x;
@@ -52,7 +40,6 @@ public class ActionScript : MonoBehaviour {
                 { 
                     ActiveCell = location.transform.Find("SelectedCells").GetChild(x * 10 + y).gameObject;
                     ActiveCell.SetActive(true);
-                    ShowLaser(hit);
                 }
             }
         }
@@ -67,8 +54,16 @@ public class ActionScript : MonoBehaviour {
                     {
                         int x = (int)hit.point.x;
                         int y = (int)hit.point.z;
-                        Instantiate(cube, new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity);
-
+                        Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity);
+                        if (pointer == 0)
+                        {
+                            manager.addFactory(x, y, 0);
+                            manager.addCell(x, y, 5);
+                        }
+                        if(pointer == 1)
+                        {
+                            manager.addCell(x, y, 1);
+                        }
                     }
                 }
             }
@@ -76,6 +71,21 @@ public class ActionScript : MonoBehaviour {
         else
         {
             firstTouchGrab = true;
+        }
+        if (nextItem.GetState(handType))
+        {
+            if (firstTouchNextItem)
+            {
+                int next = (pointer + 1) % count;
+                Holo.transform.GetChild(pointer).gameObject.SetActive(false);
+                Holo.transform.GetChild(next).gameObject.SetActive(true);
+                pointer = next;
+                firstTouchNextItem = false;
+            }
+        }
+        else
+        {
+            firstTouchNextItem = true;
         }
     }
 }

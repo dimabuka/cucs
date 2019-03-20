@@ -41,8 +41,8 @@
       "requirement": "optional"
     },
     {
-      "name": "/actions/default/in/gyhuh",
-      "type": "pose"
+      "name": "/actions/default/in/NextItem",
+      "type": "boolean"
     },
     {
       "name": "/actions/default/out/Haptic",
@@ -52,7 +52,7 @@
   "action_sets": [
     {
       "name": "/actions/default",
-      "usage": "single"
+      "usage": "leftright"
     },
     {
       "name": "/actions/NewSet",
@@ -107,8 +107,7 @@
       "/actions/default/in/SkeletonLeftHand": "Skeleton (Left)",
       "/actions/default/in/SkeletonRightHand": "Skeleton (Right)",
       "/actions/default/in/Teleport": "Teleport",
-      "/actions/default/out/Haptic": "Haptic",
-      "/actions/default/in/gyhuh": "rtyu"
+      "/actions/default/out/Haptic": "Haptic"
     }
   ]
 }
