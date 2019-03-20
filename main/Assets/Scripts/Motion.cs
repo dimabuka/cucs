@@ -25,7 +25,7 @@ public class Motion : MonoBehaviour
     {
         int x = (int)Mathf.Floor(transform.position.x);
         int y = (int)Mathf.Floor(transform.position.z);
-        if(x >= 0 && y >= 0 && x < 10 && y < 10)
+        if(x >= 0 && y >= 0 && x < 10 && y < 10 && 0 <= last && last <= 3)
         { 
             int tx = dd[last, 0];
             int ty = dd[last, 1];
@@ -39,7 +39,12 @@ public class Motion : MonoBehaviour
             {
                 last = manager.map[x, y];
             }
-            if (last == -1 || last == 5)
+            int cur = manager.map[x, y];
+            if (cur == -1) // Земля или источник
+            {
+                Destroy(gameObject);
+            }
+            if(cur == 6) // Попадание на склад
             {
                 Destroy(gameObject);
             }
