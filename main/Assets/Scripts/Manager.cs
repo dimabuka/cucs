@@ -31,7 +31,7 @@ public class Manager : MonoBehaviour
                     int ty = dd[o, 1] + (int)factories[i].y;
                     if(tx >= 0 && ty >= 0 && tx < 10 && ty < 10 && 0 <= map[tx, ty] && map[tx, ty] <= 3)
                     {
-                        GameObject newResorse = Instantiate(resourses[(int)factories[i].z], new Vector3(factories[i].x + 0.5f, 0, factories[i].y + 0.5f), Quaternion.identity);
+                        GameObject newResorse = Instantiate(resourses[(int)factories[i].z], new Vector3(factories[i].x + 0.5f, 0.2f, factories[i].y + 0.5f), Quaternion.identity);
                         newResorse.GetComponent<Motion>().last = o;
                     }
                 }

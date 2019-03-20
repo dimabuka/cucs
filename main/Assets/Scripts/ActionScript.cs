@@ -54,21 +54,21 @@ public class ActionScript : MonoBehaviour {
                     {
                         int x = (int)hit.point.x;
                         int y = (int)hit.point.z;
-                        if (pointer >= 1 && pointer <= 4) // Конвейеры
+                        if (pointer >= 2 && pointer <= 5) // Конвейеры
                         {
                             Instantiate(objects[pointer], new Vector3(x + 0.5f, 0, y + 0.5f), objects[pointer].transform.rotation);
-                            manager.addCell(x, y, pointer - 1);
+                            manager.addCell(x, y, pointer - 2);
                         }
-                        else if(pointer == 0) // Ресурсы
+                        else if(pointer <= 1) // Ресурсы
                         {
-                            Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity);
-                            manager.addFactory(x, y, 0);
-                            manager.addCell(x, y, 5);
+                            Instantiate(objects[pointer], new Vector3(x + 0.5f, 0, y + 0.5f), Quaternion.identity);
+                            manager.addFactory(x, y, pointer);
+                            manager.addCell(x, y, pointer + 5);
                         }
                         else if(pointer == 5) // Склад
                         {
                             Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity);
-                            manager.addCell(x, y, 6);
+                            manager.addCell(x, y, 10);
                         }
                     }
                 }

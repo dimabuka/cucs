@@ -44,7 +44,7 @@ public class Motion : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            if(cur == 6) // Попадание на склад
+            if(cur == 10) // Попадание на склад
             {
                 Destroy(gameObject);
             }
