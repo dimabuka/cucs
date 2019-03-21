@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.main.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Ученик\\Documents\\cucs\\main\\actions.json",
+      "action_manifest_path": "C:\\cucs\\main\\actions.json",
       "strings": {
         "en_us": {
           "name": "main [Testing]"

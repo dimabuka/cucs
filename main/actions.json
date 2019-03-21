@@ -61,6 +61,11 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/NewAction1q1",
+      "type": "boolean",
+      "requirement": "suggested"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     }
