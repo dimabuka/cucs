@@ -7,6 +7,10 @@ public class Motion : MonoBehaviour
 
     public Manager manager;
     public Color clr;
+    int debug = 0;
+    int time_stay = 0;
+    float tm = 0;
+    public GameObject explosion;
 
     private int[,] dd = {
         {-1, 0},
@@ -22,37 +26,60 @@ public class Motion : MonoBehaviour
         manager = FindObjectOfType<Manager>();
     }
 
+    void KillMe(int type = 1)
+    {
+        if (type == 1)
+        {
+            Destroy(gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
+        }
+        else Destroy(GetComponent<Motion>());
+    }
+
     void Update()
     {
+        if (manager.pause) return;
+        tm += Time.deltaTime;
+        debug += 1;
         int x = (int)Mathf.Floor(transform.position.x);
         int y = (int)Mathf.Floor(transform.position.z);
         if(x >= 0 && y >= 0 && x < 10 && y < 10 && 0 <= last && last <= 3)
-        { 
+        {
             int tx = dd[last, 0];
             int ty = dd[last, 1];
-            transform.Translate(new Vector3(tx, 0, ty) * Time.deltaTime);
-            Vector3 pos = transform.position;
-            if (tx != 0 && Mathf.Abs(pos.x - Mathf.Floor(pos.x) - 0.5f) < 0.01f)
+            if(0 <= x + tx && x + tx < 10 && 0 <= y + ty && y + ty < 10)
             {
-                last = manager.map[x, y];
-            }
-            if (ty != 0 && Mathf.Abs(pos.z - Mathf.Floor(pos.z) - 0.5f) < 0.01f)
-            {
-                last = manager.map[x, y];
+                time_stay = 0;
+                transform.Translate(new Vector3(tx, 0, ty) * Time.deltaTime);
+                Vector3 pos = transform.position;
+                if (tx != 0 && Mathf.Abs(pos.x - Mathf.Floor(pos.x) - 0.5f) < 0.01f && debug > 0)
+                {
+                    last = manager.map[x, y];
+                    transform.position = new Vector3(x + 0.5f, transform.position.y, y + 0.5f);
+                }
+                if (ty != 0 && Mathf.Abs(pos.z - Mathf.Floor(pos.z) - 0.5f) < 0.01f && debug > 0)
+                {
+                    last = manager.map[x, y];
+                }
             }
             int cur = manager.map[x, y];
-            if (cur == -1) // Земля или источник
+            if (cur == -1) // Земля
             {
-                Destroy(gameObject);
+                KillMe(1);
             }
-            if(last == 10) // Попадание на склад
+            if ((manager.map[x, y] == 5 || manager.map[x, y] == 6 || manager.map[x, y] == 7 || manager.map[x, y] == 8) && tm > 1) //источник
             {
-                Destroy(GetComponent<Motion>());
+                KillMe(1);
             }
-            if(last == 100) // Попадание в котел
+            if (last == 10) // Попадание на склад
+            {
+                manager.addItem(clr);
+                KillMe(0);
+            }
+            if (last == 100) // Попадание в котел
             {
                 manager.pots[x, y].GetComponent<Factory>().NewItem(clr);
-                Destroy(GetComponent<Motion>());
+                KillMe(1);
             }
         }
         else

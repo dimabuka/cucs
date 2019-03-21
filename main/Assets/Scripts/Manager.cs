@@ -8,6 +8,7 @@ public class Manager : MonoBehaviour
     public GameObject selectCell;
     public GameObject location;
     public GameObject[] resourses;
+    public bool pause = false;
 
     private int[,] dd = {
         {-1, 0},
@@ -19,27 +20,7 @@ public class Manager : MonoBehaviour
     public int[,] map = new int[10,10];
     List<Vector3> factories = new List<Vector3>();
     public GameObject[,] pots = new GameObject[10, 10];
-
-    IEnumerator createCube()
-    {
-        while (true)
-        {
-            for (int i = 0; i < factories.Count; i++)
-            {
-                for(int o = 0; o < 4; o++)
-                {
-                    int tx = dd[o, 0] + (int)factories[i].x;
-                    int ty = dd[o, 1] + (int)factories[i].y;
-                    if(tx >= 0 && ty >= 0 && tx < 10 && ty < 10 && 0 <= map[tx, ty] && map[tx, ty] <= 3)
-                    {
-                        GameObject newResorse = Instantiate(resourses[(int)factories[i].z], new Vector3(factories[i].x + 0.5f, 0.2f, factories[i].y + 0.5f), Quaternion.identity);
-                        newResorse.GetComponent<Motion>().last = o;
-                    }
-                }
-            }
-            yield return new WaitForSeconds(2.0f);
-        }
-    }
+    Dictionary<Color, int> stock;
 
     private void Start()
     {
@@ -54,7 +35,6 @@ public class Manager : MonoBehaviour
                 cell.name = "SCell" + i.ToString() + j.ToString();
             }
         }
-        StartCoroutine(createCube());
     }
 
     public void addPot(int i, int j, GameObject a)
@@ -62,9 +42,10 @@ public class Manager : MonoBehaviour
         pots[i, j] = a;
     }
 
-    public void addFactory(int i, int j, int x)
+    public void addFactory(int i, int j, int x, GameObject fac)
     {
         factories.Add(new Vector3(i, j, x));
+        fac.GetComponent<Supply>().type = x;
     }
 
     public void addCell(int i, int j, int x)
@@ -75,6 +56,17 @@ public class Manager : MonoBehaviour
     public bool isConv(int x, int y)
     {
         return 0 <= map[x, y] && map[x, y] <= 3;
+    }
+
+    public void createResourse(int type, float x, float y, int o)
+    {
+        GameObject newResorse = Instantiate(resourses[type], new Vector3(x, 0.32f, y), Quaternion.identity);
+        newResorse.GetComponent<Motion>().last = o;
+    }
+
+    public void AddItem(Color clr)
+    {
+
     }
 
     private void Update()

@@ -52,7 +52,6 @@ public class Factory : MonoBehaviour {
     }
 
     void Update () {
-        Debug.Log(new Vector2(cnt1, cnt2));
         if (!initalization) {
 			if(cnt1 != 0 && cnt2 != 0)
 			{

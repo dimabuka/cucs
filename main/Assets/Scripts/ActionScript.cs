@@ -54,25 +54,25 @@ public class ActionScript : MonoBehaviour {
                     {
                         int x = (int)hit.point.x;
                         int y = (int)hit.point.z;
+                        Debug.Log(manager.map[x, y]);
                         if (0 <= x && x < 10 && 0 <= y && y < 10 && manager.map[x, y] == -1)
                         {
-                            if (pointer >= 2 && pointer <= 5) // Конвейеры
+                            if (pointer >= 4 && pointer <= 7) // Конвейеры
                             {
                                 Instantiate(objects[pointer], new Vector3(x + 0.5f, 0, y + 0.5f), objects[pointer].transform.rotation);
-                                manager.addCell(x, y, pointer - 2);
+                                manager.addCell(x, y, pointer - 4);
                             }
-                            else if (pointer <= 1) // Ресурсы
+                            else if (pointer <= 3) // Ресурсы
                             {
-                                Instantiate(objects[pointer], new Vector3(x + 0.5f, 0, y + 0.5f), Quaternion.identity);
-                                manager.addFactory(x, y, pointer);
+                                manager.addFactory(x, y, pointer, Instantiate(objects[pointer], new Vector3(x + 0.5f, 0, y + 0.5f), Quaternion.identity));
                                 manager.addCell(x, y, pointer + 5);
                             }
-                            else if (pointer == 6) // Склад
+                            else if (pointer == 8) // Склад
                             {
                                 Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity);
                                 manager.addCell(x, y, 10);
                             }
-                            else if(pointer == 7) // Фабрика
+                            else if(pointer == 9) // Фабрика
                             {
                                 manager.addPot(x, y, Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity));
                                 manager.addCell(x, y, 100);
