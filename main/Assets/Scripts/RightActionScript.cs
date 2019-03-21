@@ -8,7 +8,9 @@ public class RightActionScript : MonoBehaviour {
     public SteamVR_Input_Sources handType;
     public SteamVR_Action_Vector2 touchPad;
     public Manager manager;
+    public SteamVR_Action_Boolean resetBtn;
 
+    private bool firstTouchReset = true;
     private bool firstTouchPause = true;
     private bool firstTouchGrid = true;
 
@@ -27,5 +29,15 @@ public class RightActionScript : MonoBehaviour {
         {
 
         }
+
+        if (resetBtn.GetState(handType))
+        {
+            if (firstTouchReset)
+            {
+                firstTouchReset = false;
+                manager.Reset();
+            }
+        }
+        else firstTouchReset = true;
     }
 }

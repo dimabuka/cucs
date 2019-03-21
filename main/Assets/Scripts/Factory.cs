@@ -59,7 +59,7 @@ public class Factory : MonoBehaviour {
                 int ty = (int)transform.position.z + dd[nap, 1];
                 if (0 <= tx && tx < 10 && 0 <= ty && ty < 10 && manager.isConv(tx, ty))
                 {
-                    GameObject tmp = Instantiate(jam, transform.position, Quaternion.identity);
+                    GameObject tmp = Instantiate(jam, transform.position, Quaternion.identity, manager.allItems.transform);
                     tmp.GetComponent<Motion>().last = nap;
                     cnt1--;
                     cnt2--;

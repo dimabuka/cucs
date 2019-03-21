@@ -2533,9 +2533,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4533919809324986}
   - component: {fileID: 114662771505474256}
+  - component: {fileID: 65329713617860802}
   m_Layer: 0
   m_Name: "\u041B\u0430\u0433\u0435\u0440\u044C  Left"
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3802,7 +3803,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4270359382982256}
-  - component: {fileID: 65457576725567206}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -15478,18 +15478,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685507858534502}
   m_Mesh: {fileID: 4300006, guid: 6db5349bf69c6834fb0dc45751215c31, type: 3}
---- !u!65 &65457576725567206
+--- !u!65 &65329713617860802
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968744115263306}
+  m_GameObject: {fileID: 1661433764319080}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.27, y: 2, z: 4.82}
-  m_Center: {x: -2.59, y: 0, z: -0.48}
+  m_Size: {x: 5.27, y: 2.77, z: 4.82}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95006000823934600
 Animator:
   serializedVersion: 3

@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 65576068446965504}
   m_Layer: 0
   m_Name: PotBottom
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1165,7 +1165,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.57714, y: 2.5771399, z: 2.055131}
+  m_Size: {x: 3.78, y: 2.98, z: 5.49}
   m_Center: {x: 0, y: 0, z: 0.02756548}
 --- !u!95 &95496850521791208
 Animator:

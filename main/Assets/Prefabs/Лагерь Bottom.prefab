@@ -646,7 +646,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4601820680806206}
-  - component: {fileID: 65758064493225304}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -3345,9 +3344,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4098398451668820}
   - component: {fileID: 114392842407581800}
+  - component: {fileID: 65910875114544068}
   m_Layer: 0
   m_Name: "\u041B\u0430\u0433\u0435\u0440\u044C Bottom"
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15478,18 +15478,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1356717170714126}
   m_Mesh: {fileID: 4300008, guid: 6db5349bf69c6834fb0dc45751215c31, type: 3}
---- !u!65 &65758064493225304
+--- !u!65 &65910875114544068
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192757749569686}
+  m_GameObject: {fileID: 1875912199080254}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.27, y: 2, z: 4.82}
-  m_Center: {x: -2.59, y: 0, z: -0.48}
+  m_Size: {x: 5.27, y: 3.12, z: 4.82}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95004219804492222
 Animator:
   serializedVersion: 3

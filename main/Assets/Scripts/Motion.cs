@@ -31,7 +31,7 @@ public class Motion : MonoBehaviour
         if (type == 1)
         {
             Destroy(gameObject);
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, transform.position, Quaternion.identity, manager.allItems.transform);
         }
         else Destroy(GetComponent<Motion>());
     }

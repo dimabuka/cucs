@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
     public bool pause = false;
     public Canvas canvas;
     public GameObject item;
+    public GameObject allItems;
 
     private int cnt = 0;
     private int[,] dd = {
@@ -33,12 +34,33 @@ public class Manager : MonoBehaviour
             for(int j = 0; j < 10; j++)
             {
                 map[i, j] = -1;
-                GameObject cell = Instantiate(selectCell, new Vector3(i + 0.5f, 0.01f, j + 0.5f), Quaternion.identity);
+                GameObject cell = Instantiate(selectCell, new Vector3(i + 0.5f, 0.01f, j + 0.5f), Quaternion.identity, allItems.transform);
                 cell.transform.parent = location.transform.Find("SelectedCells");
                 cell.SetActive(false);
                 cell.name = "SCell" + i.ToString() + j.ToString();
             }
         }
+    }
+
+    public void Reset()
+    {
+        for(int i = allItems.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(allItems.transform.GetChild(i).gameObject);
+        }
+        for(int i = canvas.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(canvas.transform.GetChild(i).gameObject);
+        }
+        for(int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                map[i, j] = -1;
+            }
+        }
+        stock.Clear();
+        factories.Clear();
     }
 
     public void addPot(int i, int j, GameObject a, int nap)
@@ -64,7 +86,7 @@ public class Manager : MonoBehaviour
 
     public void createResourse(int type, float x, float y, int o)
     {
-        GameObject newResorse = Instantiate(resourses[type], new Vector3(x, 0.32f, y), Quaternion.identity);
+        GameObject newResorse = Instantiate(resourses[type], new Vector3(x, 0.32f, y), Quaternion.identity, allItems.transform);
         newResorse.GetComponent<Motion>().last = o;
     }
 

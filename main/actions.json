@@ -53,6 +53,14 @@
       "type": "vector2"
     },
     {
+      "name": "/actions/default/in/NextItem",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/default/in/Reset",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     }
