@@ -10,7 +10,9 @@ public class Motion : MonoBehaviour
     int debug = 0;
     int time_stay = 0;
     float tm = 0;
+    public int id = 0;
     public GameObject explosion;
+    bool f = true;
 
     private int[,] dd = {
         {-1, 0},
@@ -33,11 +35,12 @@ public class Motion : MonoBehaviour
             Destroy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity, manager.allItems.transform);
         }
-        else Destroy(GetComponent<Motion>());
+        else f = false;
     }
 
     void Update()
     {
+        if (!f) return;
         if (manager.pause) return;
         tm += Time.deltaTime;
         debug += 1;
@@ -58,6 +61,7 @@ public class Motion : MonoBehaviour
             if (ty != 0 && Mathf.Abs(pos.z - Mathf.Floor(pos.z) - 0.5f) < 0.01f && debug > 0)
             {
                 last = manager.map[x, y];
+                transform.position = new Vector3(x + 0.5f, transform.position.y, y + 0.5f);
             }
             int cur = manager.map[x, y];
             if (cur == -1) // Земля

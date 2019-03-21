@@ -25,6 +25,11 @@ public class ActionScript : MonoBehaviour
     private GameObject ActiveCell = null;
     private int pointer = 0;
 
+    private void Start()
+    {
+        manager = FindObjectOfType<Manager>();
+    }
+
     private void next(int pos)
     {
         Holo.transform.GetChild(pointer).gameObject.SetActive(false);
@@ -79,7 +84,7 @@ public class ActionScript : MonoBehaviour
                             }
                             else if (pointer == 8) // Склад
                             {
-                                Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity, manager.allItems.transform);
+                                Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.4f, y + 0.5f), Quaternion.identity, manager.allItems.transform);
                                 manager.addCell(x, y, 10);
                             }
                             else if (pointer >= 9) // Фабрика

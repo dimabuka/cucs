@@ -2534,6 +2534,7 @@ GameObject:
   - component: {fileID: 4533919809324986}
   - component: {fileID: 114662771505474256}
   - component: {fileID: 65329713617860802}
+  - component: {fileID: 114482596682294060}
   m_Layer: 0
   m_Name: "\u041B\u0430\u0433\u0435\u0440\u044C  Left"
   m_TagString: Item
@@ -15898,6 +15899,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114482596682294060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661433764319080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f004f99c05c234ab8cef9d094a9a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114662771505474256
 MonoBehaviour:
   m_ObjectHideFlags: 1

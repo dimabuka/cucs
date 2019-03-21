@@ -9,6 +9,8 @@ public class RightActionScript : MonoBehaviour {
     public SteamVR_Action_Vector2 touchPad;
     public Manager manager;
     public SteamVR_Action_Boolean resetBtn;
+    public SteamVR_Action_Boolean gridBtn;
+    public GameObject grid;
 
     private bool firstTouchReset = true;
     private bool firstTouchPause = true;
@@ -25,10 +27,15 @@ public class RightActionScript : MonoBehaviour {
             }
         }
         else firstTouchPause = true;
-        if(touchPad.GetAxis(handType).x > 0)
+        if (touchPad.GetAxis(handType).x > 0)
         {
-
+            if (firstTouchGrid)
+            {
+                firstTouchGrid = false;
+                grid.SetActive(!grid.active);
+            }
         }
+        else firstTouchGrid = true;
 
         if (resetBtn.GetState(handType))
         {

@@ -287,5 +287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   clr: {r: 1, g: 0, b: 0, a: 0}
+  id: 1
   explosion: {fileID: 1484950755198028, guid: da9b9ad0a87ac80479cff7fd5d8a5c35, type: 2}
   last: 1
