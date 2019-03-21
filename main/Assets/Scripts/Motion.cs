@@ -6,6 +6,7 @@ public class Motion : MonoBehaviour
 {
 
     public Manager manager;
+    public Color clr;
 
     private int[,] dd = {
         {-1, 0},
@@ -44,9 +45,14 @@ public class Motion : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            if(cur == 10) // Попадание на склад
+            if(last == 10) // Попадание на склад
             {
-                Destroy(gameObject);
+                Destroy(GetComponent<Motion>());
+            }
+            if(last == 100) // Попадание в котел
+            {
+                manager.pots[x, y].GetComponent<Factory>().NewItem(clr);
+                Destroy(GetComponent<Motion>());
             }
         }
         else

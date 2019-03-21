@@ -286,4 +286,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  clr: {r: 0, g: 0.25517225, b: 1, a: 0}
   last: 1

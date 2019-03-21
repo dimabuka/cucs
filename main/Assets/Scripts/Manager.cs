@@ -18,6 +18,7 @@ public class Manager : MonoBehaviour
 
     public int[,] map = new int[10,10];
     List<Vector3> factories = new List<Vector3>();
+    public GameObject[,] pots = new GameObject[10, 10];
 
     IEnumerator createCube()
     {
@@ -56,6 +57,11 @@ public class Manager : MonoBehaviour
         StartCoroutine(createCube());
     }
 
+    public void addPot(int i, int j, GameObject a)
+    {
+        pots[i, j] = a;
+    }
+
     public void addFactory(int i, int j, int x)
     {
         factories.Add(new Vector3(i, j, x));
@@ -64,6 +70,11 @@ public class Manager : MonoBehaviour
     public void addCell(int i, int j, int x)
     {
         map[i, j] = x;
+    }
+
+    public bool isConv(int x, int y)
+    {
+        return 0 <= map[x, y] && map[x, y] <= 3;
     }
 
     private void Update()
