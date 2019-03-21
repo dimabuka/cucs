@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 33742406194727456}
   - component: {fileID: 23270952731886616}
   - component: {fileID: 95953090250822520}
+  - component: {fileID: 114625196291090014}
   m_Layer: 0
   m_Name: PotRight
   m_TagString: Untagged
@@ -1186,6 +1187,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114625196291090014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253029784457016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7ca1b37e984d543b5bfe911de33a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ang: 90
 --- !u!198 &198719429468052510
 ParticleSystem:
   m_ObjectHideFlags: 1

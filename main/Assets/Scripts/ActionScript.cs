@@ -54,7 +54,6 @@ public class ActionScript : MonoBehaviour {
                     {
                         int x = (int)hit.point.x;
                         int y = (int)hit.point.z;
-                        Debug.Log(manager.map[x, y]);
                         if (0 <= x && x < 10 && 0 <= y && y < 10 && manager.map[x, y] == -1)
                         {
                             if (pointer >= 4 && pointer <= 7) // Конвейеры
@@ -72,7 +71,7 @@ public class ActionScript : MonoBehaviour {
                                 Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity);
                                 manager.addCell(x, y, 10);
                             }
-                            else if(pointer == 9) // Фабрика
+                            else if(pointer >= 9) // Фабрика
                             {
                                 manager.addPot(x, y, Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity));
                                 manager.addCell(x, y, 100);
