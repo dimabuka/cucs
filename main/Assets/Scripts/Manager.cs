@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class Manager : MonoBehaviour
     public GameObject location;
     public GameObject[] resourses;
     public bool pause = false;
+    public Canvas canvas;
+    public GameObject item;
 
+    private int cnt = 0;
     private int[,] dd = {
         {-1, 0},
         {1, 0},
@@ -20,7 +24,7 @@ public class Manager : MonoBehaviour
     public int[,] map = new int[10,10];
     List<Vector3> factories = new List<Vector3>();
     public GameObject[,] pots = new GameObject[10, 10];
-    Dictionary<Color, int> stock;
+    Dictionary<Color, GameObject> stock = new Dictionary<Color, GameObject>();
 
     private void Start()
     {
@@ -64,9 +68,29 @@ public class Manager : MonoBehaviour
         newResorse.GetComponent<Motion>().last = o;
     }
 
-    public void AddItem(Color clr)
+    public void addItem(Color clr)
     {
-
+        if(stock.ContainsKey(clr))
+        {
+            string s = stock[clr].transform.GetChild(2).GetComponent<Text>().text.Substring(2, stock[clr].transform.GetChild(2).GetComponent<Text>().text.Length - 2);
+            int num = 0;
+            for(int i = 0; i < s.Length; i++)
+            {
+                num *= 10;
+                num += s[i] - '0';
+            }
+            num++;
+            stock[clr].transform.GetChild(2).GetComponent<Text>().text = "X " + num.ToString();
+        }
+        else
+        {
+            GameObject it = Instantiate(item, canvas.transform.position, canvas.transform.rotation, canvas.transform);
+            stock[clr] = it;
+            it.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(clr.r, clr.g, clr.b, 1);
+            it.transform.GetChild(2).gameObject.GetComponent<Text>().text = "X 1";
+            it.transform.Translate(new Vector3(cnt / 4 * 2, -cnt % 4 * 0.5f, 0));
+            cnt++;
+        }
     }
 
     private void Update()
