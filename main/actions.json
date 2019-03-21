@@ -41,11 +41,15 @@
       "requirement": "optional"
     },
     {
-      "name": "/actions/default/in/NextItem",
+      "name": "/actions/default/in/DelItem",
       "type": "boolean"
     },
     {
       "name": "/actions/default/in/TouchPad",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/default/in/LeftTouchPad",
       "type": "vector2"
     },
     {

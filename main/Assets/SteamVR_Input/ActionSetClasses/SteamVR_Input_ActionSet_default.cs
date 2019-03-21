@@ -89,11 +89,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean NextItem
+        public virtual SteamVR_Action_Boolean DelItem
         {
             get
             {
-                return SteamVR_Actions.default_NextItem;
+                return SteamVR_Actions.default_DelItem;
             }
         }
         
@@ -102,6 +102,14 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.default_TouchPad;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 LeftTouchPad
+        {
+            get
+            {
+                return SteamVR_Actions.default_LeftTouchPad;
             }
         }
         

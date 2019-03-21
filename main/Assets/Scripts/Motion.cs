@@ -47,20 +47,17 @@ public class Motion : MonoBehaviour
         {
             int tx = dd[last, 0];
             int ty = dd[last, 1];
-            if(0 <= x + tx && x + tx < 10 && 0 <= y + ty && y + ty < 10)
+            time_stay = 0;
+            transform.Translate(new Vector3(tx, 0, ty) * Time.deltaTime);
+            Vector3 pos = transform.position;
+            if (tx != 0 && Mathf.Abs(pos.x - Mathf.Floor(pos.x) - 0.5f) < 0.01f && debug > 0)
             {
-                time_stay = 0;
-                transform.Translate(new Vector3(tx, 0, ty) * Time.deltaTime);
-                Vector3 pos = transform.position;
-                if (tx != 0 && Mathf.Abs(pos.x - Mathf.Floor(pos.x) - 0.5f) < 0.01f && debug > 0)
-                {
-                    last = manager.map[x, y];
-                    transform.position = new Vector3(x + 0.5f, transform.position.y, y + 0.5f);
-                }
-                if (ty != 0 && Mathf.Abs(pos.z - Mathf.Floor(pos.z) - 0.5f) < 0.01f && debug > 0)
-                {
-                    last = manager.map[x, y];
-                }
+                last = manager.map[x, y];
+                transform.position = new Vector3(x + 0.5f, transform.position.y, y + 0.5f);
+            }
+            if (ty != 0 && Mathf.Abs(pos.z - Mathf.Floor(pos.z) - 0.5f) < 0.01f && debug > 0)
+            {
+                last = manager.map[x, y];
             }
             int cur = manager.map[x, y];
             if (cur == -1) // Земля

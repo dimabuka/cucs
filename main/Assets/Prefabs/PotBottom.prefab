@@ -57,6 +57,8 @@ GameObject:
   - component: {fileID: 23667713926436688}
   - component: {fileID: 95927829043296454}
   - component: {fileID: 114093635807706958}
+  - component: {fileID: 114398476474787986}
+  - component: {fileID: 65576068446965504}
   m_Layer: 0
   m_Name: PotBottom
   m_TagString: Untagged
@@ -1153,6 +1155,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478852476847390}
   m_Mesh: {fileID: 4300004, guid: 74864e4f3132eee4d9eb573add1432f9, type: 3}
+--- !u!65 &65576068446965504
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083348335626232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.57714, y: 2.5771399, z: 2.055131}
+  m_Center: {x: 0, y: 0, z: 0.02756548}
 --- !u!95 &95496850521791208
 Animator:
   serializedVersion: 3
@@ -1199,6 +1213,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ang: 0
+--- !u!114 &114398476474787986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083348335626232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a454f7a9d8fb1a545883341d06d8e0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initalization: 1
+  jam: {fileID: 1430072549735530, guid: 677d068e7bdffb04887ec517fd3daf47, type: 2}
+  nap: 0
 --- !u!198 &198630798156288922
 ParticleSystem:
   m_ObjectHideFlags: 1

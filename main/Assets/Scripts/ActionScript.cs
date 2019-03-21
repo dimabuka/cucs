@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
-public class ActionScript : MonoBehaviour {
+public class ActionScript : MonoBehaviour
+{
 
     public SteamVR_Input_Sources handType;
     public SteamVR_Behaviour_Pose controllerPose;
@@ -12,12 +13,14 @@ public class ActionScript : MonoBehaviour {
     public GameObject location;
     public GameObject laserPrefab;
     public GameObject[] objects;
-    public SteamVR_Action_Boolean nextItem;
     public int count;
     public GameObject Holo;
     public Manager manager;
+    public SteamVR_Action_Vector2 nextItem;
+    public SteamVR_Action_Boolean delItem;
 
     private bool firstTouchNextItem = true;
+    private bool firstTouchDelItem = true;
     private bool firstTouchGrab = true;
     private GameObject ActiveCell = null;
     private int pointer = 0;
@@ -36,8 +39,8 @@ public class ActionScript : MonoBehaviour {
             {
                 int x = (int)hit.point.x;
                 int y = (int)hit.point.z;
-                if(0 <= x && x < 10 && 0 <= y && y < 10 && manager.map[x, y] == -1)
-                { 
+                if (0 <= x && x < 10 && 0 <= y && y < 10 && manager.map[x, y] == -1)
+                {
                     ActiveCell = location.transform.Find("SelectedCells").GetChild(x * 10 + y).gameObject;
                     ActiveCell.SetActive(true);
                 }
@@ -45,7 +48,7 @@ public class ActionScript : MonoBehaviour {
         }
         if (grabAction.GetState(handType))
         {
-            if(firstTouchGrab)
+            if (firstTouchGrab)
             {
                 firstTouchGrab = false;
                 if (Physics.Raycast(controllerPose.transform.position, transform.forward, out hit, 100))
@@ -71,9 +74,9 @@ public class ActionScript : MonoBehaviour {
                                 Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity);
                                 manager.addCell(x, y, 10);
                             }
-                            else if(pointer >= 9) // Фабрика
+                            else if (pointer >= 9) // Фабрика
                             {
-                                manager.addPot(x, y, Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity));
+                                manager.addPot(x, y, Instantiate(objects[pointer], new Vector3(x + 0.5f, 0.5f, y + 0.5f), Quaternion.identity), pointer - 9);
                                 manager.addCell(x, y, 100);
                             }
                         }
@@ -85,7 +88,7 @@ public class ActionScript : MonoBehaviour {
         {
             firstTouchGrab = true;
         }
-        if (nextItem.GetState(handType))
+        if (nextItem.GetAxis(handType).x < 0)
         {
             if (firstTouchNextItem)
             {
@@ -96,9 +99,43 @@ public class ActionScript : MonoBehaviour {
                 firstTouchNextItem = false;
             }
         }
+        else if (nextItem.GetAxis(handType).x > 0)
+        {
+            if (firstTouchNextItem)
+            {
+                int next = (pointer - 1 + count) % count;
+                Holo.transform.GetChild(pointer).gameObject.SetActive(false);
+                Holo.transform.GetChild(next).gameObject.SetActive(true);
+                pointer = next;
+                firstTouchNextItem = false;
+            }
+        }
         else
         {
             firstTouchNextItem = true;
         }
+
+        if (delItem.GetState(handType))
+        {
+            if (firstTouchDelItem)
+            {
+                firstTouchDelItem = false;
+                if (Physics.Raycast(controllerPose.transform.position, transform.forward, out hit, 100))
+                {
+                    int x = (int)hit.point.x;
+                    int y = (int)hit.point.z;
+                    if (0 <= x && x < 10 && 0 <= y && y < 10 && manager.map[x, y] != -1)
+                    {
+                        Debug.Log(hit.transform.name);
+                        if (hit.transform.tag == "Item")
+                        {
+                            manager.map[x, y] = -1;
+                            Destroy(hit.transform.gameObject);
+                        }
+                    }
+                }
+            }
+        }
+        else firstTouchDelItem = true;
     }
 }

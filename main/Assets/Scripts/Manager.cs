@@ -41,15 +41,15 @@ public class Manager : MonoBehaviour
         }
     }
 
-    public void addPot(int i, int j, GameObject a)
+    public void addPot(int i, int j, GameObject a, int nap)
     {
         pots[i, j] = a;
+        a.GetComponent<Factory>().nap = nap;
     }
 
     public void addFactory(int i, int j, int x, GameObject fac)
     {
         factories.Add(new Vector3(i, j, x));
-        fac.GetComponent<Supply>().type = x;
     }
 
     public void addCell(int i, int j, int x)
