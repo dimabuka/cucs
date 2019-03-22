@@ -13,6 +13,7 @@ public class Motion : MonoBehaviour
     public int id = 0;
     public GameObject explosion;
     bool f = true;
+    float debug2 = 0;
 
     private int[,] dd = {
         {-1, 0},
@@ -44,6 +45,12 @@ public class Motion : MonoBehaviour
         if (manager.pause) return;
         tm += Time.deltaTime;
         debug += 1;
+        debug2 += Time.deltaTime;
+        if(debug2 >= 1)
+        {
+            transform.position = new Vector3((int)transform.position.x + 0.5f, transform.position.y, (int)transform.position.z + 0.5f);
+            debug2 = 0;
+        }
         int x = (int)Mathf.Floor(transform.position.x);
         int y = (int)Mathf.Floor(transform.position.z);
         if(x >= 0 && y >= 0 && x < 10 && y < 10 && 0 <= last && last <= 3)
@@ -53,12 +60,12 @@ public class Motion : MonoBehaviour
             time_stay = 0;
             transform.Translate(new Vector3(tx, 0, ty) * Time.deltaTime);
             Vector3 pos = transform.position;
-            if (tx != 0 && Mathf.Abs(pos.x - Mathf.Floor(pos.x) - 0.5f) < 0.01f && debug > 0)
+            if (tx != 0 && Mathf.Abs(pos.x - Mathf.Floor(pos.x) - 0.5f) < 0.02f && debug > 0)
             {
                 last = manager.map[x, y];
                 transform.position = new Vector3(x + 0.5f, transform.position.y, y + 0.5f);
             }
-            if (ty != 0 && Mathf.Abs(pos.z - Mathf.Floor(pos.z) - 0.5f) < 0.01f && debug > 0)
+            if (ty != 0 && Mathf.Abs(pos.z - Mathf.Floor(pos.z) - 0.5f) < 0.02f && debug > 0)
             {
                 last = manager.map[x, y];
                 transform.position = new Vector3(x + 0.5f, transform.position.y, y + 0.5f);
@@ -79,8 +86,8 @@ public class Motion : MonoBehaviour
             }
             if (last == 100) // Попадание в котел
             {
-                manager.pots[x, y].GetComponent<Factory>().NewItem(clr);
-                KillMe(1);
+                manager.pots[x, y].GetComponent<Factory>().NewItem(clr, id, gameObject);
+                KillMe(0);
             }
         }
         else

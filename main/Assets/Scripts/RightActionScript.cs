@@ -11,6 +11,7 @@ public class RightActionScript : MonoBehaviour {
     public SteamVR_Action_Boolean resetBtn;
     public SteamVR_Action_Boolean gridBtn;
     public GameObject grid;
+    public GameObject fileName;
 
     private bool firstTouchReset = true;
     private bool firstTouchPause = true;
@@ -23,7 +24,7 @@ public class RightActionScript : MonoBehaviour {
             if(firstTouchPause)
             {
                 firstTouchPause = false;
-                manager.pause = !manager.pause;
+                manager.SetPause(!manager.pause);
             }
         }
         else firstTouchPause = true;
@@ -33,6 +34,7 @@ public class RightActionScript : MonoBehaviour {
             {
                 firstTouchGrid = false;
                 grid.SetActive(!grid.active);
+                fileName.SetActive(!fileName.active);
             }
         }
         else firstTouchGrid = true;
