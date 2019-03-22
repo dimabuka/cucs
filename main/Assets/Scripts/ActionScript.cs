@@ -101,14 +101,14 @@ public class ActionScript : MonoBehaviour
         {
             firstTouchGrab = true;
         }
-        if (nextItem.GetAxis(handType).x < 0)
+        if (nextItem.GetAxis(handType).x > 0)
         {
             if (firstTouchNextItem)
             {
                 next((pointer + 1) % count);
             }
         }
-        else if (nextItem.GetAxis(handType).x > 0)
+        else if (nextItem.GetAxis(handType).x < 0)
         {
             if (firstTouchNextItem)
             {
