@@ -277,7 +277,6 @@ GameObject:
   - component: {fileID: 33057504805882418}
   - component: {fileID: 23258930795323820}
   - component: {fileID: 95125584848008336}
-  - component: {fileID: 65761628096461520}
   m_Layer: 0
   m_Name: Green Tree(Clone)
   m_TagString: Untagged
@@ -616,6 +615,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4829733948286756}
   - component: {fileID: 114247206460353634}
+  - component: {fileID: 65142639031133502}
+  - component: {fileID: 65855456871053210}
   m_Layer: 0
   m_Name: Green Tree
   m_TagString: Item
@@ -2737,18 +2738,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713180455660294}
   m_Mesh: {fileID: 4300068, guid: e0163edce31a1f040bcaa0d8086d645c, type: 3}
---- !u!65 &65761628096461520
+--- !u!65 &65142639031133502
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438714736668300}
+  m_GameObject: {fileID: 1930821110516230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65855456871053210
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1930821110516230}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 26.620073, y: 31.636385, z: 16.772942}
-  m_Center: {x: 19.72633, y: 14.975627, z: 0.0019536018}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95125584848008336
 Animator:
   serializedVersion: 3
